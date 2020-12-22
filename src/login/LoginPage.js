@@ -2,20 +2,26 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import {login} from "./login";
+import { useHistory } from "react-router-dom";
 
 export default function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [loginError, setLoginError] = useState(false)
+    const [loginError, setLoginError] = useState(false);
+    const history = useHistory();
     function validateForm() {
         return username.length > 0 && password.length > 0;
     }
     function handleSubmit(event) {
         event.preventDefault();
         let userIndex = login(username, password);
-        if (!userIndex){
+        console.log(userIndex);
+        if (!userIndex && userIndex !== 0){
             setLoginError(true);
+            return null;
         }
+        console.log('yes');
+        history.push(`/user/${username}`);
     }
 
     return (

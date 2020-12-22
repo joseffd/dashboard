@@ -5,6 +5,7 @@ export function login(username, password){
         if(user.username === username){
             return true;
         }
+        return false;
     });
     if(userIndex !== -1 && users[userIndex].password === password){
         return userIndex
