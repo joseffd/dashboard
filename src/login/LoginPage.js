@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import {login} from "./login";
 
 export default function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
+    const [loginError, setLoginError] = useState(false)
     function validateForm() {
         return username.length > 0 && password.length > 0;
     }
-
     function handleSubmit(event) {
         event.preventDefault();
+        let userIndex = login(username, password);
+        if (!userIndex){
+            setLoginError(true);
+        }
     }
 
     return (
@@ -34,9 +38,10 @@ export default function LoginPage() {
                         onChange={(input) => setPassword(input.target.value)}
                     />
                 </Form.Group>
-                <Button block size="lg" type="submit" disabled={!validateForm()}>
+                <Button block size="lg" type="submit" disabled={!validateForm()} >
                     Login
                 </Button>
+                {loginError && (<div>Login Error</div>)}
             </Form>
         </div>
     );
