@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-import {getWeather} from "../api/weatherApi";
+import {getWeather} from "../api/api";
 
 export default function WeatherWidget() {
     const [weatherData, setWeatherData] = useState({loading: true, data: null,});

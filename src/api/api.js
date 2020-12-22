@@ -8,3 +8,4 @@ const lon = -3;
 export function getWeather(){
     return fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}`).then(handleResponse).catch(handleError);
 }
+
