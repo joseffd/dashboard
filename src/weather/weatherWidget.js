@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {getWeather} from "../api/weatherApi";
 
 export default function WeatherWidget() {
-    const [weatherData, setWeatherData] = useState({loading: false, data: null,});
+    const [weatherData, setWeatherData] = useState({loading: true, data: null,});
 
     useEffect(() => {
     setWeatherData({loading: true});
@@ -12,8 +12,10 @@ export default function WeatherWidget() {
         });
     }, [setWeatherData]);
     return(
-        <div>
-            {weatherData?.data?.base}
-        </div>
+        <>
+            <h1>Weather</h1>
+            <h2>{weatherData.loading ? "-" : Math.round(weatherData?.data?.main?.temp - 273.15)} degrees</h2>
+
+        </>
     )
 }
