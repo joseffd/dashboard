@@ -21,7 +21,6 @@ export default function LoginPage() {
         }
         history.push(`/user/${username}`);
     }
-
     return (
         <div className="Login">
             <Form onSubmit={handleSubmit}>

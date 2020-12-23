@@ -37,7 +37,7 @@ function TasksWidget() {
     return (
             <>
                 <div className={"title"}><h1>Tasks</h1></div>
-                <div className={"body"}>
+                <div className={"body-tasks"}>
                 {tasks.map((todo, index) => (
                     <Task
                         key={index}
@@ -53,8 +53,6 @@ function TasksWidget() {
             </>
     );
 }
-
-
 function Task({ task, index, completeTask, removeTask, updateTask }) {
     return (
         <form>
@@ -65,7 +63,6 @@ function Task({ task, index, completeTask, removeTask, updateTask }) {
 
     );
 }
-
 function TaskForm({ addTask }) {
     const [value, setValue] = useState("");
 
@@ -88,7 +85,4 @@ function TaskForm({ addTask }) {
         </form>
     );
 }
-
-
-
 export default TasksWidget;
