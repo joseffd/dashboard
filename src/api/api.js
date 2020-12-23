@@ -1,8 +1,9 @@
 import {handleError, handleResponse} from "./apiUtils";
 
+
 const APIkey = 'd0a10211ea3d36b0a6423a104782130e';
-const lat = 51;
-const lon = -3;
+let lat = 40;
+let lon = -0.1278;
 
 
 export function getWeather(){
@@ -12,3 +13,4 @@ export function getWeather(){
 export function getClothes(){
     return fetch(`https://therapy-box.co.uk/hackathon/clothing-api.php?username=swapnil`).then(handleResponse).catch(handleError);
 }
+

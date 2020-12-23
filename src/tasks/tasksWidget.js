@@ -36,7 +36,7 @@ function TasksWidget() {
 
     return (
             <>
-                <div className={"title"}><h1>Clothes</h1></div>
+                <div className={"title"}><h1>Tasks</h1></div>
                 <div className={"body"}>
                 {tasks.map((todo, index) => (
                     <Task
