@@ -13,7 +13,8 @@ export default function HomePage() {
     const users = ls.get('users');
     const userIndex = getIndex(username, users);
     return(
-        <div>
+        <div className={"home-page"}>
+            <h1>Good day {username}</h1>
             <div className={"widgets"}>
                 <div className={"widget"}>
                     <WeatherWidget />
