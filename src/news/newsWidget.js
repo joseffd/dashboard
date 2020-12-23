@@ -1,23 +1,32 @@
 import React, {useEffect, useState} from "react";
+
 let Parser = require('rss-parser');
 
 let parser = new Parser();
 
+
 export default function NewsWidget() {
-    let feed = getNews();
+    const [newsData, setNewsData] = useState({loading: true, data: null,});
 
-    console.log(feed.title);
+    useEffect(() => {
+        setNewsData({loading: true});
+        getNews().then((data) => {
+            setNewsData({loading:false, data})
+        });
+    }, [setNewsData]);
 
+    console.log(newsData);
     return(
         <>
             <h1>News</h1>
-            <h2> degrees</h2>
+            <h2> {newsData.loading ? "-" : newsData.data[0].title}</h2>
 
         </>
     )
 }
 
-async function getNews(){
-    let feed = await parser.parseURL('https://www.reddit.com/.rss');
-    return feed;
-}
+ async function getNews(){
+        let feed = await parser.parseURL('https://cors-anywhere.herokuapp.com/'+ 'http://feeds.bbci.co.uk/news/rss.xml');
+        return feed.items;
+
+ }
