@@ -4,11 +4,21 @@ import Button from "react-bootstrap/Button";
 import {login} from "./login";
 import { useHistory } from "react-router-dom";
 
+
 export default function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState(false);
     const history = useHistory();
+    // ls.set('users', [
+    //     {username: 'test',
+    //         password: 'test',
+    //         tasks: [
+    //             {text: 'task 1',
+    //                 isComplete: false}
+    //         ]}
+    // ]);
+    console.log();
     function validateForm() {
         return username.length > 0 && password.length > 0;
     }
@@ -21,8 +31,11 @@ export default function LoginPage() {
         }
         history.push(`/user/${username}`);
     }
+
+
     return (
         <div className="Login">
+
             <Form onSubmit={handleSubmit}>
                 <Form.Group size="lg" controlId="email">
                     <Form.Label>Username:</Form.Label>
