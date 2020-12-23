@@ -33,7 +33,8 @@ export default function ClothesWidget() {
     })
     return(
         <>
-            <div className={"title"}><h1>Clothes</h1></div>
+            <div className={"title"}><h1>Tasks</h1></div>
+            <div className={"body"}>
             <PieChart data={[
                 {title: 'Raincoat', value: countRaincoat, color: '#E38627'},
                 {title: 'Jacket', value: countJacket, color: '#C13C37'},
@@ -48,6 +49,7 @@ export default function ClothesWidget() {
                           fontFamily: 'sans-serif',
                       })}
             />
+            </div>
         </>
     )
 }
