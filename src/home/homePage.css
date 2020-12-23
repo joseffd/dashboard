@@ -1,5 +1,6 @@
 
 .widgets{
+    margin: 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -9,9 +10,15 @@
 }
 
 .widget{
+    margin: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
     display: flex;
     flex-direction: column;
     width: 30%;
     background-color: rgba(0,0,0,0.1);
     text-align: center;
+}
+.widget h1{
+    background-color: yellow;
 }
