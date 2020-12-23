@@ -6,7 +6,7 @@ let parser = new Parser();
 
 
 export default function NewsWidget() {
-    const [newsData, setNewsData] = useState({loading: true, data: null,});
+    const [newsData, setNewsData] = useState({loading: true, data: [],});
 
     useEffect(() => {
         setNewsData({loading: true});

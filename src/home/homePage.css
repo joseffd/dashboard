@@ -1,0 +1,17 @@
+
+.widgets{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+
+}
+
+.widget{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    background-color: rgba(0,0,0,0.1);
+    text-align: center;
+}
