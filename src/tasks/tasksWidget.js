@@ -35,8 +35,8 @@ function TasksWidget() {
     }
 
     return (
-            <div className="todo-list">
-                <h1>Tasks</h1>
+            <>
+                <div className={"title"}><h1>Clothes</h1></div>
                 {tasks.map((todo, index) => (
                     <Task
                         key={index}
@@ -48,7 +48,7 @@ function TasksWidget() {
                     />
                 ))}
                 <TaskForm addTask={addTask} />
-            </div>
+            </>
     );
 }
 

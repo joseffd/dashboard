@@ -13,7 +13,7 @@ export default function WeatherWidget() {
     }, [setWeatherData]);
     return(
         <>
-            <h1>Weather</h1>
+            <div className={"title"}><h1>Weather</h1></div>
             <h2>{weatherData.loading ? "-" : Math.round(weatherData?.data?.main?.temp - 273.15)} degrees</h2>
 
         </>

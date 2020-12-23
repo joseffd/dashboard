@@ -10,15 +10,24 @@
 }
 
 .widget{
+    align-content: start;
+    justify-content: start;
     margin: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
     display: flex;
     flex-direction: column;
     width: 30%;
     background-color: rgba(0,0,0,0.1);
     text-align: center;
+    border-radius: 25px;
 }
 .widget h1{
+
+    top: 0;
+}
+.title {
+    border-radius: 25px 25px 0px 0px;
     background-color: yellow;
+    height: 5vh;
+    width: 100%;
+    margin-bottom: 5px;
 }

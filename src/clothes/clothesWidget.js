@@ -33,7 +33,7 @@ export default function ClothesWidget() {
     })
     return(
         <>
-            <h1>Clothes</h1>
+            <div className={"title"}><h1>Clothes</h1></div>
             <PieChart data={[
                 {title: 'Raincoat', value: countRaincoat, color: '#E38627'},
                 {title: 'Jacket', value: countJacket, color: '#C13C37'},

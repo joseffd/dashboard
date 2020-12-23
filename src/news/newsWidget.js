@@ -16,7 +16,7 @@ export default function NewsWidget() {
     }, [setNewsData]);
     return(
         <>
-            <h1>News</h1>
+            <div className={"title"}><h1>News</h1></div>
             <h2> {newsData.loading ? "-" : newsData.data[0].title}</h2>
 
         </>
