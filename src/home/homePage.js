@@ -4,6 +4,7 @@ import WeatherWidget from "../weather/weatherWidget";
 import NewsWidget from "../news/newsWidget";
 import './homePage.css';
 import TasksWidget from "../tasks/tasksWidget";
+import ClothesWidget from "../clothes/clothesWidget";
 
 export default function HomePage() {
     let { username } = useParams();
@@ -18,6 +19,10 @@ export default function HomePage() {
                 </div>
                 <div className={"widget"}>
                     <TasksWidget />
+                </div>
+
+                <div className={"widget"}>
+                    <ClothesWidget />
                 </div>
 
             </div>

@@ -14,8 +14,6 @@ export default function NewsWidget() {
             setNewsData({loading:false, data})
         });
     }, [setNewsData]);
-
-    console.log(newsData);
     return(
         <>
             <h1>News</h1>

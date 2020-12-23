@@ -15,12 +15,10 @@ export default function LoginPage() {
     function handleSubmit(event) {
         event.preventDefault();
         let userIndex = login(username, password);
-        console.log(userIndex);
         if (!userIndex && userIndex !== 0){
             setLoginError(true);
             return null;
         }
-        console.log('yes');
         history.push(`/user/${username}`);
     }
 
