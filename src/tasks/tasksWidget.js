@@ -72,7 +72,6 @@ function TaskForm({ addTask }) {
     };
 
     return (
-
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
