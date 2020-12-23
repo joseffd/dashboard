@@ -10,12 +10,11 @@ export function login(username, password){
 }
 
 export function getIndex(username, users){
-
-    let userIndex = users.findIndex(function(user, index){
+    let userIndex = users?.findIndex(function(user, index){
         if(user.username === username){
             return true;
         }
         return false;
-    });
+    }) || -1;
     return userIndex;
 }

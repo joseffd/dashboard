@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import {getIndex, login} from "../login/login";
 import ls from "local-storage";
+import {useHistory} from "react-router-dom";
 
 
 export default function SignupPage(){
@@ -10,15 +11,16 @@ export default function SignupPage(){
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [signupError, setSignupError] = useState(false);
+    const history = useHistory();
 
     function validateForm() {
         return username.length > 0 && password.length > 0 && password === confirmPassword;
     }
     function handleSubmit(event) {
         event.preventDefault();
-        const users = ls.get('users');
+        const users = ls.get('users') || [];
         let userIndex = getIndex(username, users);
-        if (userIndex === -1){
+        if (userIndex != -1){
             setSignupError(true);
             return null;
         }
@@ -60,7 +62,7 @@ export default function SignupPage(){
                 <Button block size="lg" type="submit" disabled={!validateForm()} >
                     Login
                 </Button>
-                {loginError && (<div>Login Error</div>)}
+                {signupError && (<div>Login Error</div>)}
             </Form>
-        </div>
+        </div>)
 }
