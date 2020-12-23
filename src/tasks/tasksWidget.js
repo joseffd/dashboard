@@ -1,94 +1,92 @@
-import React from "react";
+import React, {useState} from "react";
 
-function Todo({ todo, index, completeTodo, removeTodo }) {
+function TasksWidget() {
+    const [tasks, setTasks] = useState([
+        {
+            text: "Task 1",
+            isCompleted: false 
+        },
+        {
+            text: "Task 2",
+            isCompleted: true
+        }
+    ]);
+
+    const addTask = text => {
+        setTasks([...tasks, { text }]);
+    };
+
+    const completeTask = (index, isCompleted) => {
+        const newTodos = [...tasks];
+        newTodos[index].isCompleted = !isCompleted;
+        setTasks(newTodos);
+    };
+
+    const removeTask = index => {
+        const newTodos = [...tasks];
+        newTodos.splice(index, 1);
+        setTasks(newTodos);
+    };
+
+    const updateTask = (newTitle, index) => {
+        const newTodos = [...tasks];
+        newTodos[index].text = newTitle;
+        setTasks(newTodos);
+    }
+
     return (
-        <label>
-            {todo.text}
-            <input name={"test"}
-                type="checkbox"
-                   checked={todo.isCompleted}
-                   onChange={completeTodo(index)}
-                   />
-        </label>
+            <div className="todo-list">
+                <h1>Tasks</h1>
+                {tasks.map((todo, index) => (
+                    <Task
+                        key={index}
+                        index={index}
+                        task={todo}
+                        completeTask={completeTask}
+                        removeTask={removeTask}
+                        updateTask={updateTask}
+                    />
+                ))}
+                <TaskForm addTask={addTask} />
+            </div>
+    );
+}
 
+
+function Task({ task, index, completeTask, removeTask, updateTask }) {
+    return (
+        <form>
+            <input type={"text"} value={task.text} onChange={(input) => updateTask(input.target.value, index)}/>
+            <input type={"checkbox"} checked={task.isCompleted} onChange={() => completeTask(index, task.isCompleted)}/>
+            <button onClick={() => removeTask(index)}>x</button>
+        </form>
 
     );
 }
 
-function TodoForm({ addTodo }) {
-    const [value, setValue] = React.useState("");
+function TaskForm({ addTask }) {
+    const [value, setValue] = useState("");
+
     const handleSubmit = e => {
         e.preventDefault();
         if (!value) return;
-        addTodo(value);
+        addTask(value);
         setValue("");
     };
 
     return (
+
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
                 className="input"
                 value={value}
-                onChange={e => setValue(e.target.value)}
+                onChange={input => setValue(input.target.value)}
             />
         </form>
     );
 }
 
-function TasksWidget() {
-    const [todos, setTodos] = React.useState([
-        {
-            text: "Learn about React",
-            isCompleted: false
-        },
-        {
-            text: "Meet friend for lunch",
-            isCompleted: false
-        },
-        {
-            text: "Build really cool todo app",
-            isCompleted: false
-        }
-    ]);
 
-    const addTodo = text => {
-        const newTodos = [...todos, { text }];
-        setTodos(newTodos);
-    };
-
-    const completeTodo = index => {
-        const newTodos = [...todos];
-        newTodos[index].isCompleted = true;
-        setTodos(newTodos);
-    };
-
-    const removeTodo = index => {
-        const newTodos = [...todos];
-        newTodos.splice(index, 1);
-        setTodos(newTodos);
-    };
-
-    return (
-        <div className="app">
-            <div className="todo-list">
-                {todos.map((todo, index) => (
-                    <form>
-                        <Todo
-                            key={index}
-                            index={index}
-                            todo={todo}
-                            completeTodo={completeTodo}
-                            removeTodo={removeTodo}
-                        />
-
-                    </form>
-
-                ))}
-                <TodoForm addTodo={addTodo} />
-            </div>
-        </div>
-    );
-}
 
 export default TasksWidget;

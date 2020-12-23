@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import WeatherWidget from "../weather/weatherWidget";
 import NewsWidget from "../news/newsWidget";
 import './homePage.css';
+import TasksWidget from "../tasks/tasksWidget";
 
 export default function HomePage() {
     let { username } = useParams();
@@ -14,6 +15,9 @@ export default function HomePage() {
                 </div>
                 <div className={"widget"}>
                     <NewsWidget />
+                </div>
+                <div className={"widget"}>
+                    <TasksWidget />
                 </div>
 
             </div>

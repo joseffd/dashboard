@@ -1,4 +1,4 @@
-import {users} from './users';
+import {users} from '../users';
 
 export function login(username, password){
     let userIndex = users.findIndex(function(user, index){
