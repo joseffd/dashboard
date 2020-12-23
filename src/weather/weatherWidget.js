@@ -9,14 +9,12 @@ export default function WeatherWidget() {
     navigator.geolocation.getCurrentPosition(function(position) {
         setCoords({lat: position.coords.latitude, lon: position.coords.longitude});
     });
-
-
     useEffect(() => {
     setWeatherData({loading: true});
         getWeather(coord).then((data) => {
             setWeatherData({loading:false, data})
         });
-    }, [setWeatherData]);
+    }, [setWeatherData, coord]);
     return(
         <>
             <div className={"title"}><h1>Weather</h1></div>

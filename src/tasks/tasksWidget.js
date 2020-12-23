@@ -1,16 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import ls from "local-storage";
 
-function TasksWidget() {
-    const [tasks, setTasks] = useState([
-        {
-            text: "Task 1",
-            isCompleted: false 
-        },
-        {
-            text: "Task 2",
-            isCompleted: true
-        }
-    ]);
+function TasksWidget({userIndex}) {
+    const users = ls.get('users');
+    const [tasks, setTasks] = useState(users[userIndex].tasks);
 
     const addTask = text => {
         setTasks([...tasks, { text }]);
@@ -33,6 +26,11 @@ function TasksWidget() {
         newTodos[index].text = newTitle;
         setTasks(newTodos);
     }
+
+    useEffect(()=>{
+        users[userIndex].tasks = tasks;
+        ls.set('users', users);
+    }, [tasks])
 
     return (
             <>

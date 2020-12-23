@@ -5,9 +5,13 @@ import NewsWidget from "../news/newsWidget";
 import './homePage.css';
 import TasksWidget from "../tasks/tasksWidget";
 import ClothesWidget from "../clothes/clothesWidget";
+import ls from "local-storage";
+import {getIndex} from "../login/login";
 
 export default function HomePage() {
     let { username } = useParams();
+    const users = ls.get('users');
+    const userIndex = getIndex(username, users);
     return(
         <div>
             <div className={"widgets"}>
@@ -18,7 +22,7 @@ export default function HomePage() {
                     <NewsWidget />
                 </div>
                 <div className={"widget"}>
-                    <TasksWidget />
+                    <TasksWidget userIndex={userIndex} />
                 </div>
 
                 <div className={"widget"}>
