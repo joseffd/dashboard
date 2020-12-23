@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import {getIndex, login} from "./login";
+import { login} from "./login";
 import {Link, useHistory} from "react-router-dom";
-import ls from "local-storage";
+import './login.css';
 
 export default function LoginPage() {
     const [username, setUsername] = useState("");
@@ -28,23 +28,28 @@ export default function LoginPage() {
     return (
         <div className="Login">
             <Form onSubmit={handleSubmit}>
+                <div className={"username"}>
                 <Form.Group size="lg" controlId="email">
-                    <Form.Label>Username:</Form.Label>
+                    <Form.Label>Username: </Form.Label>
                     <Form.Control
-                        autoFocus
+                        className={"username-input"}
                         type="username"
                         value={username}
                         onChange={(input) => setUsername(input.target.value)}
                     />
                 </Form.Group>
+                </div>
+                <div className={"password"}>
                 <Form.Group size="lg" controlId="password">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>Password: </Form.Label>
                     <Form.Control
+                        className={"password-input"}
                         type="password"
                         value={password}
                         onChange={(input) => setPassword(input.target.value)}
                     />
                 </Form.Group>
+                </div>
                 <Button block size="lg" type="submit" disabled={!validateForm()} >
                     Login
                 </Button>

@@ -1,0 +1,17 @@
+.Login{
+    padding-top: 40px;
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+}
+.password{
+    padding-top: 5px;
+}
+.password-input{
+    position: absolute;
+    left: 150px;
+}
+.username-input{
+    position: absolute;
+    left: 150px;
+}
