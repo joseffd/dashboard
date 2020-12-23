@@ -31,7 +31,6 @@ export default function ClothesWidget() {
                 break;
         }
     })
-
     return(
         <>
             <h1>Clothes</h1>
@@ -45,7 +44,7 @@ export default function ClothesWidget() {
             ]}
                       label={({ dataEntry }) => dataEntry.title + "," + dataEntry.value}
                       labelStyle={() => ({
-                          fontSize: '4px',
+                          fontSize: '4.5px',
                           fontFamily: 'sans-serif',
                       })}
             />
