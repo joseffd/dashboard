@@ -1,34 +1,38 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import {getIndex, login} from "./login";
-import {Link, useHistory} from "react-router-dom";
+import {getIndex, login} from "../login/login";
 import ls from "local-storage";
 
-export default function LoginPage() {
+
+export default function SignupPage(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [loginError, setLoginError] = useState(false);
-    const history = useHistory();
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [signupError, setSignupError] = useState(false);
 
     function validateForm() {
-        return username.length > 0 && password.length > 0;
+        return username.length > 0 && password.length > 0 && password === confirmPassword;
     }
     function handleSubmit(event) {
         event.preventDefault();
-        let userIndex = login(username, password);
-        if (!userIndex && userIndex !== 0){
-            setLoginError(true);
+        const users = ls.get('users');
+        let userIndex = getIndex(username, users);
+        if (userIndex === -1){
+            setSignupError(true);
             return null;
         }
-        history.push(`/user/${username}`);
+        users.push({username, password, tasks: []});
+        ls.set('users', users);
+        history.push(`/`);
     }
 
 
     return (
-        <div className="Login">
+        <div className="signup">
+
             <Form onSubmit={handleSubmit}>
-                <Form.Group size="lg" controlId="email">
+                <Form.Group size="lg" controlId="username">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control
                         autoFocus
@@ -45,12 +49,18 @@ export default function LoginPage() {
                         onChange={(input) => setPassword(input.target.value)}
                     />
                 </Form.Group>
+                <Form.Group size="lg" controlId="password">
+                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(input) => setConfirmPassword(input.target.value)}
+                    />
+                </Form.Group>
                 <Button block size="lg" type="submit" disabled={!validateForm()} >
                     Login
                 </Button>
                 {loginError && (<div>Login Error</div>)}
             </Form>
-            <Link to={'/signup'}>SignUp</Link>
         </div>
-    );
 }
