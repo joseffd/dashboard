@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import {getIndex, login} from "../login/login";
 import ls from "local-storage";
 import {useHistory} from "react-router-dom";
+import './signup.css';
 
 
 export default function SignupPage(){
@@ -35,32 +36,34 @@ export default function SignupPage(){
 
             <Form onSubmit={handleSubmit}>
                 <Form.Group size="lg" controlId="username">
-                    <Form.Label>Username:</Form.Label>
+                    <Form.Label>Username: </Form.Label>
                     <Form.Control
-                        autoFocus
+                        className={"input"}
                         type="username"
                         value={username}
                         onChange={(input) => setUsername(input.target.value)}
                     />
                 </Form.Group>
                 <Form.Group size="lg" controlId="password">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>Password: </Form.Label>
                     <Form.Control
+                        className={"input"}
                         type="password"
                         value={password}
                         onChange={(input) => setPassword(input.target.value)}
                     />
                 </Form.Group>
                 <Form.Group size="lg" controlId="password">
-                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Label>Confirm Password: </Form.Label>
                     <Form.Control
+                        className={"input"}
                         type="password"
                         value={confirmPassword}
                         onChange={(input) => setConfirmPassword(input.target.value)}
                     />
                 </Form.Group>
                 <Button block size="lg" type="submit" disabled={!validateForm()} >
-                    Login
+                    SignUp
                 </Button>
                 {signupError && (<div>Login Error</div>)}
             </Form>
